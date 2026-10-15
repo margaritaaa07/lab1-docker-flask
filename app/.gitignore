@@ -1,0 +1,10 @@
+# Environment variables
+.env
+*.env
+!.env.example
+
+# Docker local data
+pgdata/
+
+# Logs
+*.log
