@@ -1,19 +1,17 @@
-# ---------- Стадия 1: сборка зависимостей ----------
 FROM python:3.11-slim AS builder
 
 WORKDIR /app
 
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 
-# ---------- Стадия 2: рантайм ----------
 FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY --from=builder /install /usr/local
+COPY --from=builder /usr/local /usr/local
 
 COPY main.py .
 

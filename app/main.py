@@ -72,7 +72,10 @@ def init_db(retries: int = 10, delay: float = 2.0) -> None:
     raise RuntimeError(f"Не удалось инициализировать БД: {last_error}")
 
 
+# ---------- Инициализация БД при импорте (нужно для gunicorn) ----------
+init_db()
+
+
 # ---------- Точка входа ----------
 if __name__ == "__main__":
-    init_db()
     app.run(host="0.0.0.0", port=5000)
